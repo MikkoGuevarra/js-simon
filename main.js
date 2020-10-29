@@ -4,6 +4,7 @@ $(document).ready(function(){
 // Dopo 30 secondi, vengono rimossi i numeri dalla pagina e l'utente deve inserire (tramite prompt) i numeri che ha visto precedentemente, uno alla volta.
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 
+var seconds = 10;
 var ran = [];
 //genero numeri 5 numeri casuali
 $('.random-numbers').each(function(){
@@ -13,10 +14,17 @@ $('.random-numbers').each(function(){
 });
 console.log(ran);
 
+var clock = setInterval(function(){
+    $('#secs').text(seconds)
+    seconds--;
+    if (seconds < 0) {
+        clearInterval(clock);
+    }
+}, 1000);
 //imposto un contatore di 30 secondi per poi nascondere i numeri generati
 setTimeout(function(){
     $('.random-numbers').hide();
-}, 10000);
+}, 11000);
 
 //genero un altro contatore maggiore a quello di prima dove chiede i numeri che si ricorda
 var getNumber = [];
@@ -34,7 +42,7 @@ setTimeout(function(){
     console.log(indovinati);
     //comunico i numeri indovinati q quali sono
     $('.getted').prepend("<div>" + "hai indovinato " + indovinati + " numeri" + "</div>");
-}, 11000);
+}, 12000);
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
