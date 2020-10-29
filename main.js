@@ -3,15 +3,31 @@ $(document).ready(function(){
 // Da lì parte un timer di 30 secondi.
 // Dopo 30 secondi, vengono rimossi i numeri dalla pagina e l'utente deve inserire (tramite prompt) i numeri che ha visto precedentemente, uno alla volta.
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+// var ran = [];
+// var seconds = 10;
+// //genero numeri 5 numeri casuali
+// $('.random-numbers').each(function(){
+//     var randomNumber = getRndInteger(1, 50);
+//     $(this).text(randomNumber);
+//     ran.push(randomNumber);
+// });
+// console.log(ran);
 
-var seconds = 10;
+var maxRandomNumbers = 5;
 var ran = [];
+var randomNumber;
+var seconds = 10;
 //genero numeri 5 numeri casuali
-$('.random-numbers').each(function(){
-    var randomNumber = getRndInteger(1, 50);
-    $(this).text(randomNumber);
-    ran.push(randomNumber);
-});
+    while (ran.length < maxRandomNumbers ) {
+        $('.random-numbers').each(function(){
+            randomNumber = getRndInteger(1, 50);
+            if (!ran.includes(randomNumber)) {
+                ran.push(randomNumber);
+                $(this).text(randomNumber);
+            }
+
+        });
+    }
 console.log(ran);
 
 var clock = setInterval(function(){
