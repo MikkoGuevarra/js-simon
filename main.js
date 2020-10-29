@@ -26,14 +26,15 @@ setTimeout(function(){
         //creo if per controllare se il numero inserito è compreso tra i numeri generati casualmente se contiene stampo il numero se no niente
         if (ran.includes(declaredNumber)) {
             getNumber.push(declaredNumber);
-
             $('.getted').append("<div>" + declaredNumber + "</div>");
         }
     });
+    console.log(getNumber);
+    var indovinati = getNumber.length;
+    console.log(indovinati);
+    //comunico i numeri indovinati q quali sono
+    $('.getted').prepend("<div>" + "hai indovinato " + indovinati + " numeri" + "</div>");
 }, 11000);
-console.log(getNumber);
-$('.getted').prepend("<div>" + "hai indovinato " + getNumber.length + "</div>");
-
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
