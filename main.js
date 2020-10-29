@@ -23,10 +23,16 @@ var getNumber = [];
 setTimeout(function(){
     $('.random-numbers').each(function(){
         var declaredNumber = parseInt(prompt('quali sono i numeri?'));
+        //creo if per controllare se il numero inserito è compreso tra i numeri generati casualmente se contiene stampo il numero se no niente
+        if (ran.includes(declaredNumber)) {
+            getNumber.push(declaredNumber);
+
+            $('.getted').append("<div>" + declaredNumber + "</div>");
+        }
     });
 }, 11000);
 console.log(getNumber);
-
+$('.getted').prepend("<div>" + "hai indovinato " + getNumber.length + "</div>");
 
 
 function getRndInteger(min, max) {
