@@ -15,7 +15,7 @@ $('.random-numbers').each(function(){
 console.log(ran);
 
 var clock = setInterval(function(){
-    $('#secs').text(seconds)
+    $('#secs').text("It will disappear in " + seconds);
     seconds--;
     if (seconds < 0) {
         clearInterval(clock);
@@ -23,6 +23,7 @@ var clock = setInterval(function(){
 }, 1000);
 //imposto un contatore di 30 secondi per poi nascondere i numeri generati
 setTimeout(function(){
+    $('#secs').hide();
     $('.random-numbers').hide();
 }, 11000);
 
@@ -41,7 +42,13 @@ setTimeout(function(){
     var indovinati = getNumber.length;
     console.log(indovinati);
     //comunico i numeri indovinati q quali sono
-    $('.getted').prepend("<div>" + "hai indovinato " + indovinati + " numeri" + "</div>");
+    if (indovinati == ran.length) {
+        $('.getted').prepend("<div>" + "hai indovinato " + indovinati + " numeri" + " complimenti hai vinto" + "</div>");
+
+    } else {
+        $('.getted').prepend("<div>" + "hai indovinato solo " + indovinati + " numeri su 5" + "</div>");
+
+    }
 }, 12000);
 
 function getRndInteger(min, max) {
