@@ -19,16 +19,17 @@ var randomNumber;
 var seconds = 10;
 //genero numeri 5 numeri casuali
     while (ran.length < maxRandomNumbers ) {
-        $('.random-numbers').each(function(){
-            randomNumber = getRndInteger(1, 50);
-            if (!ran.includes(randomNumber)) {
-                ran.push(randomNumber);
-                $(this).text(randomNumber);
-            }
-
-        });
+        randomNumber = getRndInteger(1, 50);
+        if (!ran.includes(randomNumber)) {
+            ran.push(randomNumber);
+            $('.random-numbers').append("<p>" + randomNumber + "</p>");
+            // $('.random-numbers').each(function(){
+                //     $(this).text(randomNumber)
+                // });
+        }
     }
 console.log(ran);
+// $('.random-numbers').text(ran);
 
 var clock = setInterval(function(){
     $('#secs').text("It will disappear in " + seconds);
@@ -46,7 +47,7 @@ setTimeout(function(){
 //genero un altro contatore maggiore a quello di prima dove chiede i numeri che si ricorda
 var getNumber = [];
 setTimeout(function(){
-    $('.random-numbers').each(function(){
+    $('.random-numbers p').each(function(){
         var declaredNumber = parseInt(prompt('quali sono i numeri?'));
         //creo if per controllare se il numero inserito è compreso tra i numeri generati casualmente se contiene stampo il numero se no niente
         if (ran.includes(declaredNumber)) {
